@@ -1,7 +1,77 @@
-<div className="MacbookPro161" style={{width: 1728, height: 1117, position: 'relative', backgroundImage: 'url(https://via.placeholder.com/1728x1117)'}}>
-  <img className="Image1" style={{width: 232, height: 89, left: 62, top: 650, position: 'absolute'}} src="https://via.placeholder.com/232x89" />
-  <img className="Image2" style={{width: 1728, height: 1117, left: 0, top: 0, position: 'absolute'}} src="https://via.placeholder.com/1728x1117" />
-  <div className="VNgQuayMayMN" style={{left: 17, top: 62, position: 'absolute', color: 'black', fontSize: 48, fontFamily: 'Inria Sans', fontWeight: '700', wordWrap: 'break-word'}}>Vòng quay may mắn =))<br/> </div>
-  <img className="Image" style={{width: 865, height: 857, left: 431, top: 194, position: 'absolute'}} src="https://via.placeholder.com/865x857" />
-  <div className="Arrow1" style={{width: 283, height: 0, left: 864, top: 622, position: 'absolute', transform: 'rotate(-90deg)', transformOrigin: '0 0', border: '20px white solid'}}></div>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Spin Wheel</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #121212;
+            color: #fff;
+        }
+
+        .wheel-container {
+            text-align: center;
+        }
+
+        .wheel {
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            border: 8px solid #2b2b2b;
+            background: conic-gradient(
+                #ff4b5c 0deg 60deg,
+                #ffb86c 60deg 120deg,
+                #ffff8b 120deg 180deg,
+                #50fa7b 180deg 240deg,
+                #8be9fd 240deg 300deg,
+                #bd93f9 300deg 360deg
+            );
+            transition: transform 4s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .spin-button {
+            margin-top: 30px;
+            padding: 12px 30px;
+            background-color: #ff79c6;
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+            outline: none;
+        }
+
+        .spin-button:hover {
+            background-color: #ff4b5c;
+        }
+    </style>
+</head>
+<body>
+    <div class="wheel-container">
+        <div class="wheel" id="wheel"></div>
+        <button class="spin-button" onclick="spin()">Spin Now!</button>
+    </div>
+
+    <script>
+        function spin() {
+            const wheel = document.getElementById('wheel');
+            let randomDegree = Math.floor(Math.random() * 360) + 3600; // 3600 for multiple spins
+            wheel.style.transform = `rotate(${randomDegree}deg)`;
+        }
+    </script>
+</body>
+</html>
