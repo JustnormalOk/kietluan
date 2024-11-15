@@ -28,6 +28,7 @@
             border-radius: 20px;
             padding: 20px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            position: relative;
         }
 
         .wheel {
@@ -49,16 +50,36 @@
         }
 
         .arrow {
-            position: absolute;
-            top: -25px;
-            left: 50%;
-            transform: translateX(-50%);
             width: 0;
             height: 0;
-            border-left: 12px solid transparent;
-            border-right: 12px solid transparent;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
             border-bottom: 25px solid #ff79c6;
+            position: absolute;
+            top: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
         }
+
+        .segment-text {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform-origin: center;
+            font-size: 16px;
+            color: #fff;
+        }
+
+        .segment-text:nth-child(1) { transform: rotate(30deg); }
+        .segment-text:nth-child(2) { transform: rotate(90deg); }
+        .segment-text:nth-child(3) { transform: rotate(150deg); }
+        .segment-text:nth-child(4) { transform: rotate(210deg); }
+        .segment-text:nth-child(5) { transform: rotate(270deg); }
+        .segment-text:nth-child(6) { transform: rotate(330deg); }
 
         .spin-button {
             margin-top: 20px;
@@ -87,8 +108,14 @@
 <body>
     <div class="wheel-container">
         <div class="message">Chúc bạn may mắn!</div>
+        <div class="arrow"></div>
         <div class="wheel" id="wheel">
-            <div class="arrow"></div>
+            <div class="segment-text">Unlucky</div>
+            <div class="segment-text">Lucky</div>
+            <div class="segment-text">Unlucky</div>
+            <div class="segment-text">Lucky</div>
+            <div class="segment-text">Unlucky</div>
+            <div class="segment-text">Lucky</div>
         </div>
         <button class="spin-button" onclick="spin()">Spin Now!</button>
     </div>
