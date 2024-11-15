@@ -13,44 +13,53 @@
         }
 
         body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
             background-color: #121212;
             color: #fff;
+            height: 100vh;
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-end;
+            padding: 20px;
+            overflow: hidden;
         }
 
         .wheel-container {
             text-align: center;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #1f1f1f;
+            border-radius: 20px;
+            padding: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
         }
 
         .wheel {
-            width: 320px;
-            height: 320px;
+            width: 250px;
+            height: 250px;
             border-radius: 50%;
             border: 8px solid #2b2b2b;
             background: conic-gradient(
-                #ff4b5c 0deg 60deg,
-                #ffb86c 60deg 120deg,
-                #ffff8b 120deg 180deg,
-                #50fa7b 180deg 240deg,
-                #8be9fd 240deg 300deg,
-                #bd93f9 300deg 360deg
+                #ff4b5c 0deg 60deg, /* Unlucky */
+                #50fa7b 60deg 120deg, /* Lucky */
+                #ffb86c 120deg 180deg, /* Unlucky */
+                #8be9fd 180deg 240deg, /* Lucky */
+                #ffff8b 240deg 300deg, /* Unlucky */
+                #bd93f9 300deg 360deg /* Lucky */
             );
             transition: transform 4s cubic-bezier(0.17, 0.67, 0.83, 0.67);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
 
         .spin-button {
-            margin-top: 30px;
-            padding: 12px 30px;
+            margin-top: 20px;
+            padding: 10px 25px;
             background-color: #ff79c6;
             color: #fff;
             border: none;
-            border-radius: 25px;
+            border-radius: 20px;
             cursor: pointer;
-            font-size: 18px;
+            font-size: 16px;
             transition: background-color 0.3s;
             outline: none;
         }
@@ -58,10 +67,17 @@
         .spin-button:hover {
             background-color: #ff4b5c;
         }
+
+        .message {
+            margin-bottom: 10px;
+            font-size: 18px;
+            color: #ffb86c;
+        }
     </style>
 </head>
 <body>
     <div class="wheel-container">
+        <div class="message">Chúc bạn may mắn!</div>
         <div class="wheel" id="wheel"></div>
         <button class="spin-button" onclick="spin()">Spin Now!</button>
     </div>
