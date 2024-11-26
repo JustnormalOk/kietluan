@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Search Results 🔍</h1>
+        <div id="results"></div>
+        <button onclick="goBack()">Back</button>
+    </div>
+    <script>
+        let words = [];
+        
+        // Fetch the word list
+        fetch('words.json')
+            .then(response => response.json())
+            .then(data => {
+                words = Object.keys(data); // Extract keys as word list
+                displayResults();
+            })
+            .catch(error => console.error("Error loading words:", error));
+
+        function displayResults() {
+            const query = localStorage.getItem("searchQuery") || "";
+            const resultsDiv = document.getElementById("results");
+            resultsDiv.innerHTML = "";
+
+            if (query) {
+                const matches = words.filter(word => word.startsWith(query));
+                if (matches.length) {
+                    matches.forEach(match => {
+                        const wordElement = document.createElement("div");
+                        wordElement.textContent = match;
+                        resultsDiv.appendChild(wordElement);
+                    });
+                } else {
+                    resultsDiv.textContent = "No results found 😞";
+                }
+            }
+        }
+
+        function goBack() {
+            window.location.href = "index.html";
+        }
+    </script>
+    
+    </div>
+    <script src="script.js"></script>
+    <div class="notice">NOTICE: Sometimes the translation may wrong if you use a translator tool.</div>
+    <div class="credits">Created by justnormalok2@gmail.com and lakdecember26@gmail.com.</div>
+    <a class="click" href="https://leanhkiet.statuspage.io">https://leanhkiet.statuspage.io</a>
+</body>
+</html>
